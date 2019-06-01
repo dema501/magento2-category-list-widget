@@ -1,25 +1,29 @@
 <?php
-	$categories = $this->getCategoryCollection();
-	$canShowImg = $this->canShowImage();
-	$title = $block->getTitle() ? __($block->getTitle()) : 'Categories';
+$categories = $this->getCategoryCollection();
+$title = $block->getTitle() ? __($block->getTitle()) : __($this->getTitle());
 ?>
+
+
 <?php if ($title):?>
-<div class="block-title">
-	<strong><?php echo $block->escapeHtml($title) ?></strong>
-</div>
+    <div class="block-title block-title--catalog">
+        <strong><?php echo $title; ?></strong>
+    </div>
 <?php endif ?>
-<div class="block-content catalog-category">
-<?php foreach($categories as $category):?>
-        <span class="category">
-        	<a href="<?php echo $block->escapeUrl($category->getUrl()) ?>">
-        		<?php if($canShowImg && $category->getImageUrl()):?>
-        			<img src="<?php echo $block->escapeUrl($cat->getImageUrl()) ?>" alt="" width="<?=$this->getImageWidth();?>" height="<?=$this->getImageHeight()?>"/>
-        		<?php else:?>
-        		<span class="cat-title"><?php echo $block->escapeHtml($category->getName()) ?></span>
-        		<?php endif;?>
-        	</a>
+<div class="block-content block-content--catalog">
+<?php foreach($categories as $category): ?>
+        <span class="category--item category--item-<?php echo $this->name2css($category->getName()); ?>">
+            <a href="<?php echo $category->getUrl(); ?>">
+                <span 
+                    class="category--image"
+                    style="background-image: url('<?php echo $category->getImageUrl(); ?>');"
+                />
+                <span class="category--title"><?php echo $category->getName(); ?></span>
+            </a>
         </span>
-        <?php
-endforeach;
+<?php
+    endforeach;
 ?>
+    <div class="category--all">
+        <a class="pagebuilder-button-primary" href="<?php echo $this->getViewAllURL(); ?>" target="" data-link-type="default" data-element="link"><span data-element="link_text">Shop Now</span></a>
+    </div>
 </div>
