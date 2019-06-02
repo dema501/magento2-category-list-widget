@@ -1,0 +1,70 @@
+//
+//  FAQ module styles
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .block-title--catalog {
+        .lib-heading(h2);
+        text-align: center;
+
+        b, strong {
+            font-weight: inherit;
+        }
+    }
+    .block-content--catalog {
+        .lib-vendor-prefix-display(flex);
+        flex-wrap: wrap;
+
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+                justify-content: center;
+
+        .lib-vendor-box-align(flex-end);
+
+        .category--item {
+             .lib-vendor-prefix-display(flex);
+             .lib-vendor-box-align(center);
+             .lib-vendor-prefix-flex-direction(column);
+
+             -webkit-box-orient: vertical;
+             -webkit-box-direction: normal;
+
+             padding: 0 2rem 2rem 2rem;
+             text-align: center;
+        }
+
+        .category--image {
+            .lib-vendor-prefix-display(inline-flex);
+            .lib-vendor-box-align(center);
+
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+
+             width: 5rem;
+             height: 5rem;
+
+             background-repeat: no-repeat;
+             background-position: 50% 50%;
+             background-size: contain;
+
+             border: @color-gray80 1px solid;
+        }
+
+        .category--title {
+            display: block;
+
+            font-size: 1.111rem;
+            font-weight: @font-weight__semibold;
+
+            line-height: 1.01;
+        }
+
+        .category--all {
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
