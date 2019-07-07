@@ -1,29 +1,32 @@
 <?php
 $categories = $this->getCategoryCollection();
 $title = $block->getTitle() ? __($block->getTitle()) : __($this->getTitle());
+
+if (isset($categories) && count($categories) > 0):
 ?>
-
-
-<?php if ($title):?>
-    <div class="block-title block-title--catalog">
-        <strong><?php echo $title; ?></strong>
-    </div>
-<?php endif ?>
-<div class="block-content block-content--catalog">
-<?php foreach($categories as $category): ?>
-        <span class="category--item category--item-<?php echo $this->name2css($category->getName()); ?>">
-            <a href="<?php echo $category->getUrl(); ?>">
-                <span 
-                    class="category--image"
-                    style="background-image: url('<?php echo $category->getImageUrl(); ?>');"
-                />
-                <span class="category--title"><?php echo $category->getName(); ?></span>
+<div class="block--catalog">
+    <?php if ($title):?>
+        <div class="block-title block-title--catalog">
+            <strong><?php echo $title; ?></strong>
+        </div>
+    <?php endif ?>
+    <div class="block-content block-content--catalog">
+        <?php foreach($categories as $category): ?>
+            <span class="category--item category--item-<?php echo $this->name2css($category->getName()); ?>">
+                <a href="<?php echo $category->getUrl(); ?>">
+                    <span 
+                        class="category--image"
+                        style="background-image: url('<?php echo $category->getImageUrl(); ?>');"
+                    />
+                    <span class="category--title"><?php echo $category->getName(); ?></span>
+                </a>
+            </span>
+        <?php endforeach; ?>
+        <div class="category--all">
+            <a class="pagebuilder-button-primary" href="<?php echo $this->getViewAllURL(); ?>" target="" data-link-type="default" data-element="link">
+                <span data-element="link_text">Shop Now</span>
             </a>
-        </span>
-<?php
-    endforeach;
-?>
-    <div class="category--all">
-        <a class="pagebuilder-button-primary" href="<?php echo $this->getViewAllURL(); ?>" target="" data-link-type="default" data-element="link"><span data-element="link_text">Shop Now</span></a>
+        </div>
     </div>
 </div>
+<?php endif; ?>
